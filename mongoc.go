@@ -8,10 +8,6 @@ import (
 	"go.mongodb.org/mongo-driver/v2/mongo/options"
 )
 
-type MongoDataStore struct {
-	DB *mongo.Database
-}
-
 func Connect(mongoUri string, dbName string, dataStore *MongoDataStore) {
 
 	client, err := mongo.Connect(options.Client().ApplyURI(mongoUri))
