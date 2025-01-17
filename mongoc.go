@@ -20,8 +20,9 @@ func Connect(mongoUri string, dbName string, dataStore *MongoDataStore) {
 	if err := client.Database("admin").RunCommand(context.TODO(), bson.D{{"ping", 1}}).Decode(&result); err != nil {
 		panic(err)
 	}
-	fmt.Println("Pinged your deployment. You successfully connected to MongoDB!")
+	fmt.Printf("You successfully connected to MongoDB://%s\n", dbName)
 
+	dataStore.Client = client
 	dataStore.DB = client.Database(dbName)
 
 }
